@@ -1,0 +1,8 @@
+C:\Users\okesokunan\source\repos\Taskmanagement\Backend\Taskmanagment\Taskmanagment.Core\bin\Debug\netstandard2.1\TaskManagement.Core.deps.json
+C:\Users\okesokunan\source\repos\Taskmanagement\Backend\Taskmanagment\Taskmanagment.Core\bin\Debug\netstandard2.1\TaskManagement.Core.dll
+C:\Users\okesokunan\source\repos\Taskmanagement\Backend\Taskmanagment\Taskmanagment.Core\bin\Debug\netstandard2.1\TaskManagement.Core.pdb
+C:\Users\okesokunan\source\repos\Taskmanagement\Backend\Taskmanagment\Taskmanagment.Core\obj\Debug\netstandard2.1\TaskManagement.Core.csprojAssemblyReference.cache
+C:\Users\okesokunan\source\repos\Taskmanagement\Backend\Taskmanagment\Taskmanagment.Core\obj\Debug\netstandard2.1\TaskManagement.Core.AssemblyInfoInputs.cache
+C:\Users\okesokunan\source\repos\Taskmanagement\Backend\Taskmanagment\Taskmanagment.Core\obj\Debug\netstandard2.1\TaskManagement.Core.AssemblyInfo.cs
+C:\Users\okesokunan\source\repos\Taskmanagement\Backend\Taskmanagment\Taskmanagment.Core\obj\Debug\netstandard2.1\TaskManagement.Core.dll
+C:\Users\okesokunan\source\repos\Taskmanagement\Backend\Taskmanagment\Taskmanagment.Core\obj\Debug\netstandard2.1\TaskManagement.Core.pdb
