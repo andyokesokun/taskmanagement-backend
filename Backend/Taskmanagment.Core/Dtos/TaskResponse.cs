@@ -6,6 +6,9 @@ namespace TaskManagement.Core.Dtos
 {
     public class TaskResponse : Task
     {
-        public  ICollection<UserResponse> UserResponses { get; set; }
+        public ICollection<UserResponse> UserResponses { get; set; }
+        public  TaskStatus TaskStatus;
     }
+
 }
+

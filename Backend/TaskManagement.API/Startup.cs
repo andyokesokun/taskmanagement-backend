@@ -41,6 +41,11 @@ namespace TaskManagement.API
                 config.Filters.Add(new AuthorizeFilter(policy));
             });
 
+            services.AddAuthorization(option =>
+            {
+                  option.AddPolicy("AdminPolicy", policy => policy.RequireClaim("Admin"));
+            });
+
             services.AddCors();
             services.AddSwaggerGen(config => {
 
@@ -84,6 +89,9 @@ namespace TaskManagement.API
             //Applications services
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<ITaskRepository, TaskService>();
+            services.AddScoped<ITaskStatusRepository, TaskStatusService>();
+            services.AddScoped<DatabaseSeed>();
+
             services.AddAutoMapper(x => x.AddProfile(new MappingEntity()));
 
 
@@ -91,15 +99,13 @@ namespace TaskManagement.API
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, IUserService userService)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, DatabaseSeed databaseSeed)
         {
 
-            
-            
 
-             var x=UserSeed.CreateUsers(userService, Configuration);
-
-             x.Wait();
+            //seeds database
+            var x = databaseSeed.Run();
+            x.Wait();
 
             if (env.IsDevelopment())
             {

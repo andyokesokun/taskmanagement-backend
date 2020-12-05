@@ -19,6 +19,8 @@ namespace TaskManagement.Core.Interfaces
         Task CreateUser(Dtos.UserModel userModel, String Password);
         string GenerateToken();
         Task<bool> UserExist(String userName);
-        bool isAdmin();
+        bool IsAdmin();
+
+        Task<IEnumerable<Entities.Task > > GetUserTask(string username);
     }
 }

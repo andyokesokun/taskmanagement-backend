@@ -9,3 +9,14 @@ C:\Users\okesokunan\source\repos\Taskmanagement\Backend\Taskmanagment\TaskManage
 C:\Users\okesokunan\source\repos\Taskmanagement\Backend\Taskmanagment\TaskManagement.Infrastructure\bin\Debug\netstandard2.1\TaskManagement.Core.dll
 C:\Users\okesokunan\source\repos\Taskmanagement\Backend\Taskmanagment\TaskManagement.Infrastructure\bin\Debug\netstandard2.1\TaskManagement.Core.pdb
 C:\Users\okesokunan\source\repos\Taskmanagement\Backend\Taskmanagment\TaskManagement.Infrastructure\obj\Debug\netstandard2.1\TaskManagement.Infrastructure.csproj.CopyComplete
+C:\Users\okesokunan\source\repos\Taskmanagement\Backend\TaskManagement.Infrastructure\obj\Debug\netstandard2.1\TaskManagement.Infrastructure.csprojAssemblyReference.cache
+C:\Users\okesokunan\source\repos\Taskmanagement\Backend\TaskManagement.Infrastructure\obj\Debug\netstandard2.1\TaskManagement.Infrastructure.AssemblyInfoInputs.cache
+C:\Users\okesokunan\source\repos\Taskmanagement\Backend\TaskManagement.Infrastructure\obj\Debug\netstandard2.1\TaskManagement.Infrastructure.AssemblyInfo.cs
+C:\Users\okesokunan\source\repos\Taskmanagement\Backend\TaskManagement.Infrastructure\bin\Debug\netstandard2.1\TaskManagement.Infrastructure.deps.json
+C:\Users\okesokunan\source\repos\Taskmanagement\Backend\TaskManagement.Infrastructure\bin\Debug\netstandard2.1\TaskManagement.Infrastructure.dll
+C:\Users\okesokunan\source\repos\Taskmanagement\Backend\TaskManagement.Infrastructure\bin\Debug\netstandard2.1\TaskManagement.Infrastructure.pdb
+C:\Users\okesokunan\source\repos\Taskmanagement\Backend\TaskManagement.Infrastructure\bin\Debug\netstandard2.1\TaskManagement.Core.dll
+C:\Users\okesokunan\source\repos\Taskmanagement\Backend\TaskManagement.Infrastructure\bin\Debug\netstandard2.1\TaskManagement.Core.pdb
+C:\Users\okesokunan\source\repos\Taskmanagement\Backend\TaskManagement.Infrastructure\obj\Debug\netstandard2.1\TaskManagement.Infrastructure.csproj.CopyComplete
+C:\Users\okesokunan\source\repos\Taskmanagement\Backend\TaskManagement.Infrastructure\obj\Debug\netstandard2.1\TaskManagement.Infrastructure.dll
+C:\Users\okesokunan\source\repos\Taskmanagement\Backend\TaskManagement.Infrastructure\obj\Debug\netstandard2.1\TaskManagement.Infrastructure.pdb

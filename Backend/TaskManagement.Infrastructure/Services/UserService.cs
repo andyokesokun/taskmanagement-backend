@@ -7,6 +7,8 @@ using System;
 using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
+
+
 using System.Text;
 using System.Threading.Tasks;
 using TaskManagement.Core.Dtos;
@@ -62,9 +64,12 @@ namespace TaskManagement.Infrastructure.Services
             }
 
 
-            var claims = new Claim[] {
-                    new Claim(ClaimTypes.Name, CurrentLoginAppUser.UserName )
-            };
+            var claims = new Claim[2];
+            claims[0] = new Claim(ClaimTypes.Name, CurrentLoginAppUser.UserName);
+
+            if (CurrentLoginAppUser.IsAdmin) {
+                claims[1] = new Claim("Admin","true");
+            }
 
             var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["JWT:Key"]));
             var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
@@ -131,7 +136,7 @@ namespace TaskManagement.Infrastructure.Services
             return user != null ? true : false;
         }
 
-        public  bool isAdmin()
+        public  bool IsAdmin()
         {
             if (CurrentLoginAppUser !=null) {
                 return CurrentLoginAppUser.IsAdmin;
@@ -139,5 +144,19 @@ namespace TaskManagement.Infrastructure.Services
 
             return false;
         }
+
+
+        public async Task<IEnumerable<Core.Entities.Task>> GetUserTask(string username)
+        {
+
+            var user = await FindByUserName(username);
+            return user.Tasks;
+
+        }
+  
+
     }
+
+   
+    
 }

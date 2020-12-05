@@ -13,7 +13,7 @@ namespace TaskManagement.Infrastructure.Data.Seeds
     public static class UserSeed
     {
 
-        public static async System.Threading.Tasks.Task CreateUsers(IUserService userService, IConfiguration configuration)
+        public static async System.Threading.Tasks.Task Create(IUserService userService)
         {
 
      
@@ -21,7 +21,7 @@ namespace TaskManagement.Infrastructure.Data.Seeds
             var adminUser = new UserModel
             {
 
-                UserName = "Admin@test.com",
+                UserName = "admin@test.com",
                 IsAdmin = true
 
             };
@@ -30,13 +30,14 @@ namespace TaskManagement.Infrastructure.Data.Seeds
             var user = new UserModel
             {
 
-                UserName = "Joe@test.com",
-                IsAdmin = true
+                UserName = "joe@test.com",
+                IsAdmin = false
 
             };
 
+             // creates only if users dont exist
              await userService.CreateUser(adminUser, "Admin@123");
-             await userService.CreateUser(user, "joe@123");
+             await userService.CreateUser(user, "Joe@123");
 
 
 

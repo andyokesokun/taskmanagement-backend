@@ -13,8 +13,14 @@ namespace TaskManagement.Core.Interfaces
         Task Save(T t);
         Task Delete(int? id);
         Task<bool> Exist(int? id);
-      
-        
+        Task<int> Count();
+
+        Task AddRange(T[] t);
+
+
+
+
+
 
 
 

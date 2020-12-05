@@ -52,12 +52,17 @@ namespace  TaskManagement.Infrastructure.Services
             return await entitySet.ToListAsync();
         }
 
- 
+        public async Task<int> Count()
+        {
+            return await entitySet.CountAsync();
+        }
+
 
         public async Task Save(T t)
         {
             if (t != null)
             {
+               
                 entitySet.Add(t);
                 await _dataContext.SaveChangesAsync();
               
@@ -75,7 +80,10 @@ namespace  TaskManagement.Infrastructure.Services
             }
         }
 
-      
-
+        public async Task AddRange(T[] t)
+        {
+            _dataContext.AddRange(t);
+            await _dataContext.SaveChangesAsync();
+        }
     }
 }

@@ -18,8 +18,9 @@ namespace TaskManagement.Infrastructure.Extensions
 
                 Id = task.Id,
                 DueDate = task.DueDate,
-                name = task.name,
-                description = task.description,
+                Name = task.Name,
+                Description = task.Description,
+                TaskStatus = task.TaskStatus,  
                 UserResponses = task.AppUsers.Select(s => new UserResponse{ UserName = s.UserName } ).ToList()
 
             };
@@ -32,7 +33,6 @@ namespace TaskManagement.Infrastructure.Extensions
             return new UserResponse
             {
                   UserName = appUser.UserName
-
             };
         }
     }

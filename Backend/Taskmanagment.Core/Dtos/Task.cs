@@ -9,9 +9,11 @@ namespace TaskManagement.Core.Dtos
     {
         public int Id { get; set; }
         [MaxLength(255)]
-        public string name { get; set; }
+        public string Name { get; set; }
         [MaxLength(2000)]
-        public string description { get; set; }
+        public string Description { get; set; }
         public DateTime DueDate { get; set; }
+        public int TaskStatusId { get; set; }
+
     }
 }

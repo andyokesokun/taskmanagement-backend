@@ -22,13 +22,7 @@ namespace TaskManagement.API.Controllers
         {
              _userService = userService;
         }
-        [HttpGet]
-        public String showCookie() {
 
-            var userName = User.Claims.FirstOrDefault(s => s.Type == ClaimTypes.Name).Value;
-            Console.WriteLine(userName);
-            return "Cookie";
-        }
 
         [AllowAnonymous]
         [HttpPost]
@@ -36,7 +30,6 @@ namespace TaskManagement.API.Controllers
         public async Task <IActionResult> Login(LoginModel loginModel)
         {
 
-      
            
             var valid = await _userService.Authenticate(loginModel.UserName, loginModel.Password);
 
@@ -47,7 +40,7 @@ namespace TaskManagement.API.Controllers
 
             var token= _userService.GenerateToken();
 
-            var isAdmin = _userService.isAdmin();
+            var isAdmin = _userService.IsAdmin();
 
             return new JsonResult(new { status="success", token,  access = isAdmin });
 
