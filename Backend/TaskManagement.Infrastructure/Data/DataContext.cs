@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using TaskManagement.Core.Entities;
+using TaskManagement.Entities;
 using TaskManagement.Infrastructure.Data.Seeds;
 
 namespace TaskManagement.Infrastructure.Data
@@ -17,7 +17,7 @@ namespace TaskManagement.Infrastructure.Data
 
         public DbSet<Task> Tasks { get; set; }
         public DbSet<AssignedTask> AssignedTasks { get; set; }
-        public DbSet<TaskStatus> TaskStatuses { get; set; }
+        public DbSet<Entities.TaskStatus> TaskStatuses { get; set; }
 
 
        

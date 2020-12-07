@@ -3,10 +3,9 @@ using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
 using System.Text;
-using TaskManagement.Core.Constants;
-using TaskManagement.Core.Dtos;
-using TaskManagement.Core.Entities;
-using TaskManagement.Core.Interfaces;
+using TaskManagement.Dtos;
+using TaskManagement.Interfaces;
+
 
 namespace TaskManagement.Infrastructure.Data.Seeds
 {

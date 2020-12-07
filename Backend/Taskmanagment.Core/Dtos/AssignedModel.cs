@@ -5,11 +5,12 @@ using System.Text;
 
 namespace TaskManagement.Dtos
 {
-    public class LoginModel
+    public class AssignedModel
     {
+    
         [Required]
-        public String UserName { get; set; }
+        public string userName { get; set; }
         [Required]
-        public String Password { get; set; }
+        public string TaskId { get; set; }
     }
 }

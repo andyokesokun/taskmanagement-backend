@@ -8,9 +8,9 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using TaskManagement.Core.Dtos;
-using TaskManagement.Core.Interfaces;
 using TaskManagement.Infrastructure.Extensions;
+using TaskManagement.Dtos;
+using TaskManagement.Interfaces;
 
 namespace TaskManagement.API.Controllers
 {
@@ -23,13 +23,15 @@ namespace TaskManagement.API.Controllers
         private readonly ILogger<TasksController> _logger;
         private readonly ITaskRepository _taskService;
         private readonly IMapper _mapper;
+        private readonly IUserService _userService;
 
-        public TasksController(ILogger<TasksController> logger,ITaskRepository  taskService, IMapper mapper)
+        public TasksController(ILogger<TasksController> logger,ITaskRepository  taskService, IMapper mapper, IUserService userService )
 
         {
             _logger = logger;
             _taskService = taskService;
             _mapper = mapper;
+            _userService = userService;
         }
 
         [ProducesResponseType(StatusCodes.Status200OK)]
@@ -67,25 +69,72 @@ namespace TaskManagement.API.Controllers
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [HttpPost]
-        public  async Task<ActionResult<TaskResponse>>  Post([Bind] Core.Dtos.Task task) {
+        public  async Task<ActionResult<TaskResponse>>  Post([Bind] Dtos.Task task) {
 
             
-            var entity = _mapper.Map<Core.Entities.Task>(task);
+            var entity = _mapper.Map<Entities.Task>(task);
+            entity.TaskStatusId = (int)Entities.TaskStatus.Type.Pending;
 
             await _taskService.Save(entity);
 
-            return CreatedAtAction(nameof(Post), entity);
+            return CreatedAtAction(nameof(Post), entity); 
 
 
 
         }
+
+
+
+        [Authorize(Policy = "AdminPolicy")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [ProducesResponseType(StatusCodes.Status201Created)]
+        [HttpPost]
+        [Route("assign")]
+        public async Task<ActionResult<TaskResponse>> AssignTask([Bind] Dtos.AssignedModel assignedModel)
+        {
+
+
+            int.TryParse(assignedModel.TaskId , out var taskId);
+
+            var task = await _taskService.Find(taskId);
+            if (task == null)
+            {
+                return NotFound();
+            }
+
+
+            var user = await _userService.FindByUserName(assignedModel.userName);
+            if (user == null)
+            {
+                return NotFound();
+            }
+
+
+
+            var entity = new Entities.AssignedTask
+            {
+                AppUserId = user.Id,
+                TaskId = task.Id
+            };
+
+            await _taskService.SaveAssignedTask(entity);
+
+            var result = await _taskService.FindWithRelations(task.Id);
+
+            return CreatedAtAction(nameof(Post), result);
+
+
+
+        }
+
 
         [Authorize(Policy = "AdminPolicy")]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [Route("{id}")]
         [HttpPut]
-        public async Task<ActionResult<TaskResponse>> Put([FromRoute]int id, [Bind] Core.Dtos.Task task)
+        public async Task<ActionResult<TaskResponse>> Put([FromRoute]int id, [Bind] Dtos.Task task)
         {
 
             var role = User.Claims.FirstOrDefault(s => s.Type == ClaimTypes.Role)?.Value;
@@ -110,7 +159,7 @@ namespace TaskManagement.API.Controllers
             }
 
 
-             entity = _mapper.Map<Core.Entities.Task>(task);
+            entity = _mapper.Map<Entities.Task>(task);
 
             await _taskService.Save(entity);
 

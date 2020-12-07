@@ -5,13 +5,14 @@ using System.Text;
 using TaskManagement;
 using System.Threading.Tasks;
 
-namespace TaskManagement.Core.Interfaces
+namespace TaskManagement.Interfaces
 {
     public interface  ITaskRepository : IRepository<Entities.Task>
     {
 
-        Task<ICollection<Core.Entities.Task>> FindAllWithRelations();
-        Task  <Core.Entities.Task> FindWithRelations(int id);
+        Task<ICollection<Entities.Task>> FindAllWithRelations();
+        Task  <Entities.Task> FindWithRelations(int id);
+        Task SaveAssignedTask(Entities.AssignedTask assignedTask);
 
 
 

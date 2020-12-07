@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using TaskManagement.Infrastructure.Data;
-using TaskManagement.Core.Interfaces;
+using TaskManagement.Interfaces;
 
 namespace  TaskManagement.Infrastructure.Services
 {

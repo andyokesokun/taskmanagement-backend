@@ -4,13 +4,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using TaskManagement.Core.Entities;
-using TaskManagement.Core.Interfaces;
+using TaskManagement.Entities;
 using TaskManagement.Infrastructure.Data;
+using TaskManagement.Interfaces;
 
 namespace TaskManagement.Infrastructure.Services
 {
-    public class TaskService : BaseRepository<Core.Entities.Task>, ITaskRepository
+    public class TaskService : BaseRepository<Entities.Task>, ITaskRepository
     {
         public TaskService(DataContext dataContext) : base(dataContext)
         {
@@ -18,7 +18,7 @@ namespace TaskManagement.Infrastructure.Services
 
         }
 
-        public async Task<ICollection<Core.Entities.Task>> FindAllWithRelations()
+        public async Task<ICollection<Entities.Task>> FindAllWithRelations()
         {
 
             return await _dataContext.Tasks
@@ -28,7 +28,7 @@ namespace TaskManagement.Infrastructure.Services
 
         }
 
-        public async Task<Core.Entities.Task> FindWithRelations(int id)
+        public async Task<Entities.Task> FindWithRelations(int id)
         {
 
             return await _dataContext.Tasks
@@ -38,5 +38,11 @@ namespace TaskManagement.Infrastructure.Services
                  .SingleOrDefaultAsync();
 
         }
+
+        public async System.Threading.Tasks.Task SaveAssignedTask(AssignedTask assignedTask )
+        {
+              _dataContext.Add(assignedTask);
+              await _dataContext.SaveChangesAsync();
+        } 
     }
 }

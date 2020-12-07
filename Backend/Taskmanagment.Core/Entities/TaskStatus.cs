@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace TaskManagement.Core.Entities
+namespace TaskManagement.Entities
 {
     public class TaskStatus : Dtos.TaskStatus
     {
@@ -10,9 +10,9 @@ namespace TaskManagement.Core.Entities
 
         public enum Type
         {
-            Pending,
-            Started,
-            Completed,
+            Pending =1,
+            Started = 2,
+            Completed = 3,
         }
     }
 

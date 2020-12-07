@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 
-namespace TaskManagement.Core.Interfaces
+namespace TaskManagement.Interfaces
 {
     public interface IUserService
     {
@@ -14,9 +14,10 @@ namespace TaskManagement.Core.Interfaces
         Task <List<Claim>> GetUserClaims(String username);
      
         Task<IEnumerable<Entities.AppUser> > GetAllUsers();
+
         Task<Entities.AppUser> FindByUserName(string username);
         Task SignIn(string username);
-        Task CreateUser(Dtos.UserModel userModel, String Password);
+        Task<Entities.AppUser> CreateUser(Dtos.UserModel userModel, String Password);
         string GenerateToken();
         Task<bool> UserExist(String userName);
         bool IsAdmin();

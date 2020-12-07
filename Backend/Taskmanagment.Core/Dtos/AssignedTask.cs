@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Text;
 
-namespace TaskManagement.Core.Dtos
+namespace TaskManagement.Dtos
 {
     public class AssignedTask
     {

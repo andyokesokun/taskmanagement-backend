@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace TaskManagement.Core.Entities
+namespace TaskManagement.Entities
 {
     public class AppUser : IdentityUser
     {    

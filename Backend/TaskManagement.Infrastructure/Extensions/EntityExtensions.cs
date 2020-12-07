@@ -2,8 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using TaskManagement.Core.Dtos;
-using TaskManagement.Core.Entities;
+using TaskManagement.Dtos;
 
 namespace TaskManagement.Infrastructure.Extensions
 {
@@ -11,7 +10,7 @@ namespace TaskManagement.Infrastructure.Extensions
     {
 
 
-        public static TaskResponse MapTaskResponse(this Core.Entities.Task task) {
+        public static TaskResponse MapTaskResponse(this Entities.Task task) {
 
             return new TaskResponse
             {
@@ -20,6 +19,7 @@ namespace TaskManagement.Infrastructure.Extensions
                 DueDate = task.DueDate,
                 Name = task.Name,
                 Description = task.Description,
+                TaskStatusId = task.TaskStatusId,
                 TaskStatus = task.TaskStatus,  
                 UserResponses = task.AppUsers.Select(s => new UserResponse{ UserName = s.UserName } ).ToList()
 
@@ -27,7 +27,7 @@ namespace TaskManagement.Infrastructure.Extensions
         }
 
 
-        public static UserResponse MapUserResponse(this Core.Entities.AppUser appUser)
+        public static UserResponse MapUserResponse(this Entities.AppUser appUser)
         {
 
             return new UserResponse

@@ -12,12 +12,12 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using AutoMapper;
-using TaskManagement.Core.Entities;
-using TaskManagement.Core.Interfaces;
 using TaskManagement.Infrastructure.Data;
 using TaskManagement.Infrastructure.Data.Seeds;
 using TaskManagement.Infrastructure.Services;
-using TaskManagement.Core.Map;
+using TaskManagement.TaskStatus.Map;
+using TaskManagement.Entities;
+using TaskManagement.Interfaces;
 
 namespace TaskManagement.API
 {
@@ -71,7 +71,12 @@ namespace TaskManagement.API
             services.AddIdentity<AppUser, IdentityRole>(option => option.SignIn.RequireConfirmedAccount= false)
                     .AddEntityFrameworkStores<DataContext>();
 
-            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+            services.AddAuthentication( option =>
+                      {
+                          option.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                          option.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+
+                     })
                     .AddJwtBearer(options =>
                     {
                         options.TokenValidationParameters = new TokenValidationParameters

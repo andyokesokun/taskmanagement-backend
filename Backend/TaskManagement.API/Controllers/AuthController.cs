@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using TaskManagement.Core.Dtos;
-using TaskManagement.Core.Interfaces;
+using TaskManagement.Dtos;
+using TaskManagement.Interfaces;
 
 namespace TaskManagement.API.Controllers
 {

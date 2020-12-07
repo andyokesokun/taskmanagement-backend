@@ -2,8 +2,8 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using TaskManagement.Core.Entities;
-using TaskManagement.Core.Interfaces;
+using TaskManagement.Interfaces;
+
 
 namespace TaskManagement.Infrastructure.Data.Seeds
 {
@@ -16,10 +16,10 @@ namespace TaskManagement.Infrastructure.Data.Seeds
             int records = await taskStatusRepository.Count();
             if (records == 0) {
 
-                var taskStatuses = new TaskStatus[] {
-                    new TaskStatus { Id = 1, Status = TaskStatus.Type.Pending.ToString() },
-                    new TaskStatus { Id = 2, Status = TaskStatus.Type.Started.ToString() },
-                    new TaskStatus { Id = 3, Status = TaskStatus.Type.Completed.ToString() }
+                var taskStatuses = new  Entities.TaskStatus[] {
+                    new Entities.TaskStatus { Id = 1, Status =  Entities.TaskStatus.Type.Pending.ToString() },
+                    new Entities.TaskStatus { Id = 2, Status =  Entities.TaskStatus.Type.Started.ToString() },
+                    new Entities.TaskStatus { Id = 3, Status =  Entities.TaskStatus.Type.Completed.ToString() }
                 };
 
                 await taskStatusRepository.AddRange(taskStatuses);

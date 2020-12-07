@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using TaskManagement.Core.Entities;
 
-namespace TaskManagement.Core.Interfaces
+namespace TaskManagement.Interfaces
 {
-    public interface ITaskStatusRepository : IRepository<TaskStatus>
+    public interface ITaskStatusRepository : IRepository<Entities.TaskStatus>
     {
         
     }

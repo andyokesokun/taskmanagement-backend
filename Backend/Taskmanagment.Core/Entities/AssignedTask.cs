@@ -1,4 +1,4 @@
-﻿namespace TaskManagement.Core.Entities
+﻿namespace TaskManagement.Entities
 {
     public class AssignedTask : Dtos.AssignedTask
     {

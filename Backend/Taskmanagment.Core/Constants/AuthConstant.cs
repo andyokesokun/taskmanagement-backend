@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace TaskManagement.Core.Constants
+namespace TaskManagement.Constants
 {
     public class AuthConstant
     {

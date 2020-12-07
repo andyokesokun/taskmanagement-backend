@@ -3,7 +3,8 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
-using TaskManagement.Core.Interfaces;
+using TaskManagement.Interfaces;
+
 
 namespace TaskManagement.Infrastructure.Data.Seeds
 {

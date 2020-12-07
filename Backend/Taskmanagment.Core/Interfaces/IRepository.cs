@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TaskManagement.Core.Interfaces
+namespace TaskManagement.Interfaces
 {
     public interface IRepository<T>
     {
