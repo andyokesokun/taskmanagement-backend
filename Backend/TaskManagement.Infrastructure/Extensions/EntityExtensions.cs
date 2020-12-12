@@ -21,7 +21,7 @@ namespace TaskManagement.Infrastructure.Extensions
                 Description = task.Description,
                 TaskStatusId = task.TaskStatusId,
                 TaskStatus = task.TaskStatus,  
-                UserResponses = task.AppUsers.Select(s => new UserResponse{ UserName = s.UserName } ).ToList()
+                AssignedUsers = task.AssignedTasks?.Select(s => new UserResponse{ UserName = s.AppUser.UserName } ).ToList()
 
             };
         }
@@ -32,6 +32,7 @@ namespace TaskManagement.Infrastructure.Extensions
 
             return new UserResponse
             {
+                  UserId =appUser.Id,
                   UserName = appUser.UserName
             };
         }

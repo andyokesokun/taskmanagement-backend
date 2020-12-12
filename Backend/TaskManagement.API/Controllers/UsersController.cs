@@ -22,12 +22,14 @@ namespace TaskManagement.API.Controllers
 
         private readonly ILogger<UsersController> _logger;
         private readonly IUserService _userService;
+        private readonly ITaskRepository _taskRepository;
         private readonly IMapper _mapper;
 
-        public UsersController(ILogger<UsersController> logger, IUserService userService, IMapper mapper)
+        public UsersController(ILogger<UsersController> logger, IUserService userService, ITaskRepository taskRepository, IMapper mapper)
         {
             _logger = logger;
             _userService = userService;
+            _taskRepository = taskRepository;
             _mapper = mapper;
         }
 
@@ -42,17 +44,22 @@ namespace TaskManagement.API.Controllers
         }
 
 
+ 
         [ProducesResponseType(StatusCodes.Status200OK)]
-        [Route("tasks/{username}")]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [Route("tasks/{userId}")]
         [HttpGet]  
-        public async Task<IEnumerable<TaskResponse>> GetUserTask(string username)
+        public async Task<ActionResult<IEnumerable<TaskResponse>>> GetUserTask(string userId)
         {
 
-            var user = await _userService.FindByUserName(username);
-            var tasks = await _userService.GetUserTask(username);
+            var user = await _userService.Find(userId);
+            if (user == null) {
+                return NotFound();
+            }
+            var tasks = await _taskRepository.FindUserTasks(userId);
 
 
-            return tasks.Select(s => s.MapTaskResponse());
+            return  Ok(tasks.Select(s => s.MapTaskResponse()));
 
         }
 
@@ -66,7 +73,7 @@ namespace TaskManagement.API.Controllers
 
           
 
-            var defaultPassword = "password@123";
+            var defaultPassword = "Password@123";
             var user=await _userService.CreateUser(userModel, defaultPassword);
 
             return CreatedAtAction(nameof(Post), user.MapUserResponse());

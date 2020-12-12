@@ -116,6 +116,15 @@ namespace TaskManagement.Infrastructure.Services
             return user;
         }
 
+
+        public async Task<AppUser> Find(string userId)
+        {
+            var user = await _userManager.FindByIdAsync(userId);
+
+            return user;
+        }
+
+
         public async Task<IEnumerable<AppUser>> GetAllUsers()
         {
             var user = await _userManager.Users.Where(s => !s.IsAdmin).ToListAsync();
@@ -149,13 +158,7 @@ namespace TaskManagement.Infrastructure.Services
         }
 
 
-        public async Task<IEnumerable<Entities.Task>> GetUserTask(string username)
-        {
-
-            var user = await FindByUserName(username);
-            return user.Tasks;
-
-        }
+     
   
 
     }

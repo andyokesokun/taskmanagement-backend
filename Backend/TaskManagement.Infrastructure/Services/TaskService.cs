@@ -22,7 +22,8 @@ namespace TaskManagement.Infrastructure.Services
         {
 
             return await _dataContext.Tasks
-                 .Include(s => s.AppUsers)
+                 .Include( s =>  s.AssignedTasks)
+                 .ThenInclude(s => s.AppUser)
                  .Include(s => s.TaskStatus)
                  .ToListAsync();
 
@@ -32,10 +33,25 @@ namespace TaskManagement.Infrastructure.Services
         {
 
             return await _dataContext.Tasks
-                 .Include(s => s.AppUsers)
+                 .Include(s => s.AssignedTasks)
+                 .ThenInclude(s => s.AppUser)
                  .Include(s => s.TaskStatus)
                  .Where(s => s.Id == id)
                  .SingleOrDefaultAsync();
+
+        }
+
+        public async Task<ICollection<Entities.Task> > FindUserTasks(string  userId)
+        {
+
+
+            return await _dataContext.Tasks
+                 .Include(s => s.AssignedTasks)
+                 .ThenInclude(s => s.AppUser)
+                 .Include(s => s.TaskStatus)
+                 .Where(s => s.AssignedTasks.Any(s => s.AppUserId == userId) )
+                 .ToListAsync();
+          
 
         }
 

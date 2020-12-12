@@ -13,6 +13,7 @@ namespace TaskManagement.Interfaces
         Task<ICollection<Entities.Task>> FindAllWithRelations();
         Task  <Entities.Task> FindWithRelations(int id);
         Task SaveAssignedTask(Entities.AssignedTask assignedTask);
+        Task<ICollection<Entities.Task>> FindUserTasks(string userName);
 
 
 

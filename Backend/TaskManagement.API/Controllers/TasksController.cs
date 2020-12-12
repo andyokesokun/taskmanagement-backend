@@ -40,7 +40,8 @@ namespace TaskManagement.API.Controllers
         {
 
             var task = await _taskService.FindAllWithRelations();
-            return task.Select(s => s.MapTaskResponse());
+            var result = task.Select(s => s.MapTaskResponse());
+            return result;
 
         }
 

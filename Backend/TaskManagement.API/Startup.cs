@@ -44,6 +44,7 @@ namespace TaskManagement.API
             services.AddAuthorization(option =>
             {
                   option.AddPolicy("AdminPolicy", policy => policy.RequireClaim("Admin"));
+              
             });
 
             services.AddCors();

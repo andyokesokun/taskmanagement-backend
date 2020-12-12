@@ -8,6 +8,6 @@ namespace TaskManagement.Entities
     public class AppUser : IdentityUser
     {    
         public bool  IsAdmin { get; set; }
-        public IEnumerable<Task> Tasks { get; set; } 
+        public virtual ICollection<AssignedTask> AssignedTasks { get; set; }
     }
 }
